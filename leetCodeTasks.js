@@ -180,6 +180,27 @@ const counter = createCounter(5)
 counter.increment(); // 6
 counter.reset(); // 5
 counter.decrement(); // 4
+/* ============= */
+
+/* Функция должна вернуть значение только 1 раз */
+let once = function (fn) {
+    let flag = true;
+
+    return function (...args) {
+        if (flag) {
+            flag = undefined
+            return fn(...args)
+        } 
+        return undefined
+    }
+};
+
+let fn = (a,b,c) => (a + b + c)
+let onceFn = once(fn)
+
+onceFn(1,2,3); // 6
+onceFn(2,3,6); // returns undefined without calling fn
+/* ============= */
 
 
 
