@@ -170,7 +170,10 @@ let createCounter = function(init) {
     return {
         increment: () => ++count,
         decrement: () => --count,
-        reset: () => init
+        reset: () => {
+            count = init;
+            return count;
+        }
     }
 };
 const counter = createCounter(5)
