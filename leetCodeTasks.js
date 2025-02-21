@@ -162,6 +162,21 @@ var compose = function(functions) {
 };
 const fn = compose([x => x + 1, x => 2 * x])
 fn(4) // 9
+/* ============= */
+
+/* Управление счётчиком через замыкание */
+let createCounter = function(init) {
+    let count = init;
+    return {
+        increment: () => ++count,
+        decrement: () => --count,
+        reset: () => init
+    }
+};
+const counter = createCounter(5)
+counter.increment(); // 6
+counter.reset(); // 5
+counter.decrement(); // 4
 
 
 
